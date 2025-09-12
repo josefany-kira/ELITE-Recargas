@@ -53,10 +53,11 @@
       height: 100%; width: 220px;
       background: #0c1324;
       padding: 70px 25px;
-      transition: right 0.4s ease;
+      transition: right 0.4s ease, opacity 0.4s ease;
       box-shadow: -5px 0 15px rgba(0,0,0,0.6);
+      opacity: 0;
     }
-    nav.active { right: 0; }
+    nav.active { right: 0; opacity: 1; }
     nav a {
       display: block; margin: 16px 0;
       color: #fff; text-decoration: none; font-weight: bold;
@@ -83,11 +84,17 @@
     }
     .hero h2 {
       font-size: 40px; font-weight: bold;
-      background: linear-gradient(45deg, #00c6ff, gold);
+      background: linear-gradient(90deg, #00c6ff, gold, #00c6ff);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 12px;
       text-shadow: 0 0 20px rgba(255,215,0,0.4);
+      animation: shine 3s linear infinite;
+    }
+    @keyframes shine {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
     }
     .hero p {
       font-size: 17px; color: #ddd; max-width: 520px;
@@ -109,7 +116,10 @@
       transition: 0.4s;
     }
     .btn:hover::after { left: 100%; }
-    .btn:hover { transform: scale(1.08); box-shadow: 0 0 20px gold; }
+    .btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px gold, 0 0 35px #1da1f2;
+    }
 
     /* ===== Seções ===== */
     section {
@@ -152,6 +162,14 @@
       border-top: 1px solid gold;
     }
     footer p { margin: 4px 0; color: #aaa; font-size: 14px; }
+
+    /* ===== Responsividade ===== */
+    @media (max-width: 768px) {
+      header h1 { font-size: 20px; }
+      .hero h2 { font-size: 28px; }
+      .hero img { max-width: 150px; }
+      .cards { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -173,7 +191,7 @@
 
   <!-- Hero -->
   <section class="hero" id="hero">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Eo_circle_blue_diamond.svg/1200px-Eo_circle_blue_diamond.svg.png" alt="Logo Elite Recargas">
+    <img src="images/logo.png" alt="Logo Elite Recargas">
     <h2>Bem-vindo à Elite Recargas</h2>
     <p>O melhor lugar para suas recargas de diamantes e benefícios exclusivos. Rápido, seguro e confiável.</p>
     <button class="btn">Fazer Recarga</button>
@@ -238,4 +256,4 @@
   </script>
 
 </body>
-  </html>
+</html>
