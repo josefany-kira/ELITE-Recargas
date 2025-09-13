@@ -22,6 +22,34 @@
       border-radius: 10px;
     }
 
+    /* ===== Preloader ===== */
+    #preloader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #020617;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+    #preloader img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 20px gold);
+      animation: spin 2s linear infinite, float 2s ease-in-out infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     /* ===== Header ===== */
     header {
       display: flex; justify-content: space-between; align-items: center;
@@ -76,9 +104,8 @@
     .hero img {
       max-width: 200px; margin-bottom: 20px;
       filter: drop-shadow(0 0 20px gold);
+      border-radius: 50%;
       animation: float 4s ease-in-out infinite;
-      border-radius: 50%;       /* Torna o logo circular */
-      object-fit: cover;        /* Mantém proporção sem distorcer */
     }
     @keyframes float {
       0%,100% { transform: translateY(0); }
@@ -176,6 +203,11 @@
 </head>
 <body>
 
+  <!-- Preloader -->
+  <div id="preloader">
+    <img src="https://josefany-kira.github.io/ELITE-Recargas/logo.jpg" alt="Logo Elite Recargas">
+  </div>
+
   <header>
     <h1>ELITE Recargas</h1>
     <div class="menu" onclick="toggleMenu()">
@@ -255,7 +287,15 @@
         if (rect.top < triggerBottom) sec.classList.add("visible");
       });
     });
+
+    // Preloader
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      preloader.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => { preloader.style.display = 'none'; }, 500);
+    });
   </script>
 
 </body>
-    </html>
+</html>
