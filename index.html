@@ -33,17 +33,23 @@
       align-items: center;
       z-index: 9999;
       flex-direction: column;
+      transition: opacity 1s ease;
     }
     #preloader img {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      filter: drop-shadow(0 0 20px gold);
-      animation: spin 2s linear infinite, float 2s ease-in-out infinite, pulse 1.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 25px gold);
+      animation: spin 2s linear infinite, float 3s ease-in-out infinite;
     }
-    @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
-    @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
-    @keyframes pulse { 0%,100% { filter: brightness(1);} 50% { filter: brightness(1.5);} }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
 
     /* ===== Header ===== */
     header {
@@ -85,11 +91,8 @@
       display: block; margin: 16px 0;
       color: #fff; text-decoration: none; font-weight: bold;
       font-size: 15px; transition: 0.3s;
-      opacity: 0;
-      transform: translateX(20px);
     }
-    nav a.show { opacity: 1; transform: translateX(0); transition: all 0.5s ease; }
-    nav a:hover { color: gold; }
+    nav a:hover { color: gold; letter-spacing: 1px; }
 
     /* ===== Hero ===== */
     .hero {
@@ -97,12 +100,13 @@
       display: flex; flex-direction: column;
       justify-content: center; align-items: center;
       text-align: center; padding: 20px;
+      position: relative;
     }
     .hero img {
       max-width: 200px; margin-bottom: 20px;
-      filter: drop-shadow(0 0 20px gold);
+      filter: drop-shadow(0 0 25px gold);
       border-radius: 50%;
-      animation: float 3s ease-in-out infinite;
+      animation: float 4s ease-in-out infinite;
     }
     .hero h2 {
       font-size: 40px; font-weight: bold;
@@ -111,21 +115,37 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 12px;
+      text-shadow: 0 0 20px rgba(255,215,0,0.4);
       animation: shine 3s linear infinite;
     }
-    @keyframes shine { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-    .hero p { font-size: 17px; color: #ddd; max-width: 520px; }
+    @keyframes shine {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .hero p {
+      font-size: 18px; color: #ddd; max-width: 600px;
+    }
 
     /* ===== Botões ===== */
     .btn {
-      margin-top: 24px; padding: 13px 30px;
+      margin-top: 24px; padding: 14px 35px;
       font-size: 16px; font-weight: bold;
       border: none; border-radius: 30px;
       background: linear-gradient(45deg, gold, #1da1f2);
-      color: #000; cursor: pointer;
-      transition: 0.3s;
+      color: #000; cursor: pointer; position: relative;
+      overflow: hidden; transition: 0.3s;
     }
-    .btn:hover { transform: scale(1.08); box-shadow: 0 0 25px gold, 0 0 35px #1da1f2; }
+    .btn::after {
+      content: ""; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.4);
+      transition: 0.4s;
+    }
+    .btn:hover::after { left: 100%; }
+    .btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px gold, 0 0 35px #1da1f2;
+    }
 
     /* ===== Seções ===== */
     section {
@@ -152,17 +172,13 @@
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,215,0,0.25);
       border-radius: 15px; padding: 20px;
-      transition: transform 0.5s, box-shadow 0.5s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 0 15px rgba(255,215,0,0.5);
+      box-shadow: 0 0 20px rgba(255,215,0,0.5);
     }
     .card h3 { margin-bottom: 10px; color: gold; font-size: 18px; }
-
-    /* ===== Depoimentos ===== */
-    .depoimentos { background: rgba(255,255,255,0.03); }
-    .depo { font-style: italic; color: #ddd; }
 
     /* ===== Footer ===== */
     footer {
@@ -199,10 +215,8 @@
   <nav id="menuNav">
     <a href="#hero">Início</a>
     <a href="#sobre">Sobre</a>
-    <a href="#produtos">Produtos</a>
-    <a href="#comprar">Como Comprar</a>
-    <a href="#depoimentos">Depoimentos</a>
-    <a href="#contacto">Contato</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contacto">Contacto</a>
     <a href="#privacidade">Privacidade</a>
   </nav>
 
@@ -212,79 +226,38 @@
     <h2>Bem-vindo à Elite Recargas</h2>
     <p>O melhor lugar para suas recargas de diamantes e benefícios exclusivos. Rápido, seguro e confiável.</p>
     <button class="btn">Fazer Recarga</button>
-    <h3 style="margin-top:30px;color:gold;">Destaques da Semana</h3>
-    <ul style="list-style:none;margin-top:10px;">
-      <li>🔥 Contas Exclusivas</li>
-      <li>🛠️ Painéis FF Personalizados</li>
-      <li>🧤 Novidade: Luvas Gamer (entrega local)</li>
-    </ul>
   </section>
 
   <!-- Sobre -->
   <section id="sobre">
     <h2>Sobre Nós</h2>
-    <ul style="list-style:none;">
-      <li>📖 História da loja, missão e visão</li>
-      <li>🔒 Garantia de segurança nas vendas</li>
-      <li>🌍 Compromisso com clientes de Angola e Brasil</li>
-    </ul>
+    <p>Somos especializados em recargas digitais, oferecendo serviços com qualidade, agilidade e segurança para gamers de todo o mundo.</p>
   </section>
 
-  <!-- Produtos -->
-  <section id="produtos">
-    <h2>Nossos Produtos</h2>
+  <!-- Serviços -->
+  <section id="servicos">
+    <h2>Nossos Serviços</h2>
     <div class="cards">
       <div class="card">
-        <h3>Codiguins</h3>
-        <p>🐰 Coelhão – 30k<br>🔥 Soldado Vulcânico – 30k<br>🔫 AK – 30k</p>
+        <h3>Recargas de Diamantes</h3>
+        <p>Receba diamantes em segundos no seu jogo favorito.</p>
       </div>
       <div class="card">
-        <h3>🧤 Acessórios Gamer</h3>
-        <p>Luvas Gamer – <strong>3000Kz</strong></p>
+        <h3>Vendas de Contas</h3>
+        <p>Contas verificadas com skins e itens exclusivos.</p>
       </div>
       <div class="card">
-        <h3>🕹️ Contas FF Premium</h3>
-        <p>Contas raras e atualizadas com skins exclusivas.</p>
-      </div>
-      <div class="card">
-        <h3>📦 Painéis & Serviços</h3>
-        <p>Painéis 100% HS com garantia.</p>
+        <h3>Suporte 24/7</h3>
+        <p>Atendimento dedicado sempre disponível para você.</p>
       </div>
     </div>
   </section>
 
-  <!-- Como Comprar -->
-  <section id="comprar">
-    <h2>Como Comprar</h2>
-    <ul style="list-style:none;">
-      <li>✅ Passos simples via WhatsApp</li>
-      <li>💳 Pagamento: referência, transferência ou multicaixa</li>
-      <li>🔒 Garantia e suporte sempre disponíveis</li>
-    </ul>
-  </section>
-
-  <!-- Depoimentos -->
-  <section id="depoimentos" class="depoimentos">
-    <h2>O que dizem nossos clientes</h2>
-    <div class="cards">
-      <div class="card"><p class="depo">"Serviço rápido e confiável! Recebi meus diamantes em minutos."</p><strong>- Carlos M.</strong></div>
-      <div class="card"><p class="depo">"Equipe atenciosa e preços justos. Recomendo sempre!"</p><strong>- Ana P.</strong></div>
-      <div class="card"><p class="depo">"Comprei uma conta premium e veio exatamente como prometido."</p><strong>- João L.</strong></div>
-    </div>
-  </section>
-
-  <!-- Contato -->
+  <!-- Contacto -->
   <section id="contacto">
-    <h2>Contato</h2>
-    <p>📱 WhatsApp: 952040405</p>
-    <p>💳 Transferência Xpress: 972 309 598</p>
-    <h3>Suporte Online</h3>
-    <form>
-      <input type="text" placeholder="Seu Nome" required>
-      <input type="email" placeholder="Seu Email" required>
-      <textarea rows="4" placeholder="Sua mensagem..." required></textarea>
-      <button type="submit" class="btn">Enviar</button>
-    </form>
+    <h2>Contacto</h2>
+    <p>Email: suporte@eliterecargas.com</p>
+    <p>WhatsApp: +244 900 000 000</p>
   </section>
 
   <!-- Privacidade -->
@@ -293,22 +266,16 @@
     <p>Valorizamos sua privacidade. Todos os dados são protegidos e utilizados apenas para finalidades de recarga.</p>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Elite Recargas. Todos os direitos reservados.</p>
-    <p>Feito com ❤ para gamers de Angola e Brasil</p>
   </footer>
 
   <script>
     function toggleMenu() {
-      const nav = document.getElementById('menuNav');
-      nav.classList.toggle("active");
-      const links = nav.querySelectorAll('a');
-      links.forEach((link, index) => {
-        setTimeout(() => link.classList.toggle('show'), index * 100);
-      });
+      document.getElementById('menuNav').classList.toggle("active");
     }
 
+    // Efeito revelar seções ao rolar
     const sections = document.querySelectorAll("section");
     window.addEventListener("scroll", () => {
       const triggerBottom = window.innerHeight * 0.85;
@@ -318,13 +285,13 @@
       });
     });
 
+    // Preloader
     window.addEventListener("load", () => {
       const preloader = document.getElementById('preloader');
       preloader.style.opacity = '0';
-      preloader.style.transition = 'opacity 1s ease';
-      setTimeout(() => { preloader.style.display = 'none'; }, 2000);
+      setTimeout(() => { preloader.style.display = 'none'; }, 1000);
     });
   </script>
 
 </body>
-      </html>
+  </html>
