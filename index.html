@@ -3,357 +3,341 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ELITE Recargas</title>
+  <title>ELITE RECARGAS - O Teu Mundo Gamer</title>
   <style>
     /* ===== Reset ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {margin:0;padding:0;box-sizing:border-box;}
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #020617, #0c1b33, #111);
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c, #000000);
       color: #fff;
-      scroll-behavior: smooth;
-      line-height: 1.6;
+      overflow-x: hidden;
     }
-
-    /* ===== Scrollbar ===== */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, gold, #1da1f2);
-      border-radius: 10px;
-    }
-
-    /* ===== Preloader ===== */
-    #preloader {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #020617;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      flex-direction: column;
-      transition: opacity 1s ease;
-    }
-    #preloader img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      filter: drop-shadow(0 0 25px gold);
-      animation: spin 2s linear infinite, float 3s ease-in-out infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    /* ===== Header ===== */
     header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 15px 30px;
-      background: rgba(0,0,0,0.75);
-      position: fixed; top: 0; width: 100%;
-      z-index: 1000; backdrop-filter: blur(6px);
-      border-bottom: 1px solid rgba(255,215,0,0.2);
+      text-align: center;
+      padding: 2rem 1rem 1rem 1rem;
+      background: linear-gradient(90deg, #ff0000, #ff7300, #ffef00, #00ff00, #008cff, #8f00ff);
+      background-size: 600% 600%;
+      animation: crazyBg 8s ease infinite;
+      cursor: pointer;
     }
-    header h1 {
-      font-size: 24px;
-      font-weight: bold;
-      background: linear-gradient(45deg, #1da1f2, gold);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    @keyframes crazyBg {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
     }
-
-    /* ===== Menu ===== */
-    .menu { cursor: pointer; display: flex; flex-direction: column; gap: 5px; }
-    .menu span {
-      width: 7px; height: 7px;
-      border-radius: 50%; background: gold;
-      transition: 0.3s;
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 0 20px rgba(255,255,0,0.7);
+      margin-bottom: 1rem;
+      object-fit: cover;
     }
-    .menu:hover span { transform: scale(1.4); }
+    header h1 { font-size: 2.5rem; font-weight: bold; }
+    header p { font-size: 1.2rem; margin-top: .5rem; }
 
     nav {
-      position: fixed; right: -240px; top: 0;
-      height: 100%; width: 220px;
-      background: #0c1324;
-      padding: 70px 25px;
-      transition: right 0.4s ease, opacity 0.4s ease;
-      box-shadow: -5px 0 15px rgba(0,0,0,0.6);
-      opacity: 0;
+      display: flex; justify-content: center; gap: 1rem;
+      background: #111; padding: 1rem;
+      position: sticky; top: 0; z-index: 10;
     }
-    nav.active { right: 0; opacity: 1; }
     nav a {
-      display: block; margin: 16px 0;
-      color: #fff; text-decoration: none; font-weight: bold;
-      font-size: 15px; transition: 0.3s;
+      color: #fff; text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
     }
-    nav a:hover { color: gold; letter-spacing: 1px; }
+    nav a:hover { color: #ff0; text-shadow: 0 0 10px #ff0; }
 
-    /* ===== Hero ===== */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      text-align: center; padding: 20px;
-      position: relative;
-    }
-    .hero img {
-      max-width: 200px; margin-bottom: 20px;
-      filter: drop-shadow(0 0 25px gold);
-      border-radius: 50%;
-      animation: float 4s ease-in-out infinite;
-    }
-    .hero h2 {
-      font-size: 40px; font-weight: bold;
-      background: linear-gradient(90deg, #00c6ff, gold, #00c6ff);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 12px;
-      text-shadow: 0 0 20px rgba(255,215,0,0.4);
-      animation: shine 3s linear infinite;
-    }
-    @keyframes shine {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-    .hero p {
-      font-size: 18px; color: #ddd; max-width: 600px;
-    }
-
-    /* ===== Botões ===== */
-    .btn {
-      margin-top: 24px; padding: 14px 35px;
-      font-size: 16px; font-weight: bold;
-      border: none; border-radius: 30px;
-      background: linear-gradient(45deg, gold, #1da1f2);
-      color: #000; cursor: pointer; position: relative;
-      overflow: hidden; transition: 0.3s;
-    }
-    .btn::after {
-      content: ""; position: absolute; top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: rgba(255,255,255,0.4);
-      transition: 0.4s;
-    }
-    .btn:hover::after { left: 100%; }
-    .btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 25px gold, 0 0 35px #1da1f2;
-    }
-
-    /* ===== Seções ===== */
     section {
-      padding: 80px 25px;
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
       text-align: center;
-      opacity: 0; transform: translateY(40px);
-      transition: all 0.7s ease;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      color: #ff0;
+      text-shadow: 0 0 10px #ff0, 0 0 20px #f00;
     }
-    section.visible { opacity: 1; transform: translateY(0); }
-    section h2 {
-      font-size: 28px; margin-bottom: 18px;
-      background: linear-gradient(45deg, #1da1f2, gold);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    .banner {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: pulse 2s infinite;
     }
-    section p { font-size: 16px; color: #ccc; max-width: 700px; margin: 0 auto; }
-
-    /* ===== Cards ===== */
-    .cards {
-      margin-top: 30px;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+    @keyframes pulse {
+      0%,100%{transform:scale(1);}
+      50%{transform:scale(1.05);}
+    }
+    .destaques ul, .produtos ul {
+      list-style: none; padding: 0;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
     }
     .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,215,0,0.25);
-      border-radius: 15px; padding: 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: #222;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255,255,0,0.3);
+      transition: transform 0.3s;
+      cursor: pointer;
+      position: relative;
     }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 20px rgba(255,215,0,0.5);
+    .card:hover { transform: scale(1.05) rotate(-1deg); }
+    .card strong { color: #0f0; }
+    .admin-actions {
+      display:none;
+      position:absolute;
+      top:5px;
+      right:5px;
+      gap:5px;
     }
-    .card h3 { margin-bottom: 10px; color: gold; font-size: 18px; }
+    .admin-actions button {
+      padding:2px 5px;
+      font-size:0.8rem;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+    }
+    .btn-edit { background:#00f; color:#fff; }
+    .btn-del { background:#f00; color:#fff; }
 
-    /* ===== Footer ===== */
+    .contato, .depoimentos { text-align: center; }
+    .contato p { margin: .5rem 0; }
+
     footer {
       text-align: center;
-      padding: 25px;
-      background: #0c1b33;
-      border-top: 1px solid gold;
+      padding: 1rem;
+      background: #111;
+      font-size: .9rem;
+      color: #aaa;
     }
-    footer p { margin: 4px 0; color: #aaa; font-size: 14px; }
+    @media (max-width:600px){
+      header h1{font-size:1.8rem;}
+      h2{font-size:1.5rem;}
+    }
 
-    /* ===== Responsividade ===== */
-    @media (max-width: 768px) {
-      header h1 { font-size: 20px; }
-      .hero h2 { font-size: 28px; }
-      .hero img { max-width: 150px; }
-      .cards { grid-template-columns: 1fr; }
+    /* Painel ADM */
+    #adminPanel {
+      display:none;
+      position:fixed;
+      top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      background:#111;
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 0 20px #ff0;
+      z-index:999;
+      width:90%; max-width:400px;
+    }
+    #adminPanel input, #adminPanel select {
+      width:100%; margin:5px 0; padding:10px;
+      border:none; border-radius:5px;
+    }
+    #adminPanel button {
+      margin-top:10px;
+      width:100%;
+      padding:10px;
+      background:#ff0;
+      border:none;
+      font-weight:bold;
+      cursor:pointer;
     }
   </style>
 </head>
 <body>
-
-  <!-- Preloader -->
-  <div id="preloader">
-    <img src="https://josefany-kira.github.io/ELITE-Recargas/logo.jpg" alt="Logo Elite Recargas">
-  </div>
-
-  <header>
-    <h1>ELITE Recargas</h1>
-    <div class="menu" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
+  <header onclick="openAdmin()">
+    <img src="logo.jpg" alt="Logo ELITE RECARGAS">
+    <h1>ELITE RECARGAS - O Teu Mundo Gamer Começa Aqui</h1>
+    <p>🔒 100% Confiável | 🇦🇴 Orgulho Angolano | 🚀 Entrega Rápida</p>
   </header>
 
-  <nav id="menuNav">
-    <a href="#hero">Início</a>
+  <nav>
+    <a href="#inicio">Início</a>
     <a href="#sobre">Sobre</a>
-    <a href="#servicos">Serviços</a>
     <a href="#produtos">Produtos</a>
-    <a href="#pagamentos">Pagamentos</a>
+    <a href="#como">Como Comprar</a>
+    <a href="#contato">Contato</a>
     <a href="#depoimentos">Depoimentos</a>
-    <a href="#contacto">Contacto</a>
-    <a href="#privacidade">Privacidade</a>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <img src="https://josefany-kira.github.io/ELITE-Recargas/logo.jpg" alt="Logo Elite Recargas">
-    <h2>Bem-vindo à Elite Recargas</h2>
-    <p>O melhor lugar para suas recargas de diamantes e benefícios exclusivos. Rápido, seguro e confiável.</p>
-    <button class="btn">Fazer Recarga</button>
+  <section id="inicio">
+    <div class="banner">
+      <h2>Sejas bem-vindo à ELITE RECARGAS — onde os gamers confiam!</h2>
+      <p>[Imagem: Personagem FF + logo da ELITE RECARGAS]</p>
+    </div>
+    <div class="destaques">
+      <h2>Destaques da Semana</h2>
+      <ul>
+        <li class="card">🔥 Promoção de Diamantes</li>
+        <li class="card">⭐ Contas Exclusivas</li>
+        <li class="card">🎮 Painéis FF Personalizados</li>
+        <li class="card">🧤 Novidade: Luvas Gamer</li>
+      </ul>
+    </div>
   </section>
 
-  <!-- Sobre -->
   <section id="sobre">
     <h2>Sobre Nós</h2>
-    <p>Somos especializados em recargas digitais, oferecendo serviços com qualidade, agilidade e segurança para gamers de todo o mundo.</p>
+    <p>Somos a <strong>ELITE RECARGAS</strong>, loja gamer que nasceu em Angola com o propósito de trazer confiança, rapidez e qualidade para jogadores angolanos e brasileiros.</p>
+    <p><strong>Missão:</strong> Ser referência no mercado gamer africano. <br>
+       <strong>Visão:</strong> Criar uma comunidade gamer unida. <br>
+       <strong>Compromisso:</strong> Segurança, confiança e respeito ao cliente.</p>
   </section>
 
-  <!-- Serviços -->
-  <section id="servicos">
-    <h2>Nossos Serviços</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Recargas de Diamantes</h3>
-        <p>Receba diamantes em segundos no seu jogo favorito.</p>
-      </div>
-      <div class="card">
-        <h3>Vendas de Contas</h3>
-        <p>Contas verificadas com skins e itens exclusivos.</p>
-      </div>
-      <div class="card">
-        <h3>Suporte 24/7</h3>
-        <p>Atendimento dedicado sempre disponível para você.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Produtos -->
   <section id="produtos">
-    <h2>Produtos em Destaque</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Codiguin Coelhão</h3>
-        <p>Preço: 30k</p>
-      </div>
-      <div class="card">
-        <h3>Codiguin Soldado Vulcânico</h3>
-        <p>Preço: 30k</p>
-      </div>
-      <div class="card">
-        <h3>Codiguin da AK</h3>
-        <p>Preço: 30k</p>
-      </div>
-      <div class="card">
-        <h3>Luvas Gamer</h3>
-        <p>Preço: 3000Kz</p>
-      </div>
+    <h2>Produtos</h2>
+    <div class="produtos">
+      <h3>💎 Diamantes Free Fire</h3>
+      <ul id="diamantes">
+        <li class="card" onclick="goWhatsApp('100 Dimas – 1400Kz')">100 Dimas – <strong>1400Kz</strong></li>
+        <li class="card" onclick="goWhatsApp('310 Dimas – 3700Kz')">310 Dimas – <strong>3700Kz</strong></li>
+        <li class="card" onclick="goWhatsApp('520 Dimas – 5500Kz')">520 Dimas – <strong>5500Kz</strong></li>
+        <li class="card" onclick="goWhatsApp('1060 Dimas – 11000Kz')">1060 Dimas – <strong>11000Kz</strong></li>
+        <li class="card" onclick="goWhatsApp('Passe Booyah – 2500Kz')">Passe Booyah – <strong>2500Kz</strong></li>
+      </ul>
+
+      <h3>🧤 Acessórios Gamer</h3>
+      <ul id="acessorios">
+        <li class="card">Luvas Gamer – <strong>1200Kz</strong></li>
+      </ul>
+
+      <h3>🕹️ Contas FF Premium</h3>
+      <ul id="contas">
+        <li class="card">Contas com skins raras, sempre atualizadas</li>
+      </ul>
+
+      <h3>📦 Painéis e Serviços</h3>
+      <ul id="paineis">
+        <li class="card">Painéis 100% HS com garantia</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Pagamentos -->
-  <section id="pagamentos">
-    <h2>Formas de Pagamento</h2>
-    <p>Aceitamos diversas formas de pagamento seguras:</p>
-    <ul>
-      <li>✔️ Transferência Bancária</li>
-      <li>✔️ Multicaixa Express</li>
-      <li>✔️ Referência</li>
-    </ul>
+  <section id="como">
+    <h2>Como Comprar</h2>
+    <p>1️⃣ Escolhe o produto <br>
+       2️⃣ Faz o pedido pelo WhatsApp <br>
+       3️⃣ Paga via referência, transferência ou multicaixa <br>
+       4️⃣ Recebe com rapidez e suporte garantido 🚀</p>
   </section>
 
-  <!-- Depoimentos -->
-  <section id="depoimentos">
-    <h2>O que dizem nossos clientes</h2>
-    <div class="cards">
-      <div class="card">
-        <p>"Entrega rápida e confiável. Sempre recomendo a Elite!"</p>
-        <strong>- João A.</strong>
-      </div>
-      <div class="card">
-        <p>"Os codiguins são legítimos e funcionam na hora."</p>
-        <strong>- Maria K.</strong>
-      </div>
-      <div class="card">
-        <p>"Atendimento excelente e suporte 24/7 de verdade."</p>
-        <strong>- Paulo M.</strong>
-      </div>
-    </div>
+  <section id="contato" class="contato">
+    <h2>Contato</h2>
+    <p>📱 WhatsApp: <strong>956 581 637</strong></p>
+    <p>💸 Transferência Xpress: <strong>928224599</strong></p>
+    <p>📧 Suporte: formulário direto no site (em breve)</p>
   </section>
 
-  <!-- Contacto -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Email: suporte@eliterecargas.com</p>
-    <p>WhatsApp: +244 900 000 000</p>
-    <form>
-      <input type="text" placeholder="Seu Nome" required>
-      <input type="email" placeholder="Seu Email" required>
-      <textarea placeholder="Sua mensagem..." rows="4" required></textarea>
-      <button class="btn" type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <!-- Privacidade -->
-  <section id="privacidade">
-    <h2>Política de Privacidade</h2>
-    <p>Valorizamos sua privacidade. Todos os dados são protegidos e utilizados apenas para finalidades de recarga.</p>
+  <section id="depoimentos" class="depoimentos">
+    <h2>Depoimentos</h2>
+    <p>"Entrega super rápida! Já virei cliente fiel." — <em>Manuel, Luanda</em></p>
+    <p>"Consegui meu passe Booyah em minutos, recomendo muito!" — <em>Bruno, Benguela</em></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Elite Recargas. Todos os direitos reservados.</p>
+    © 2025 ELITE RECARGAS — Todos os direitos reservados
   </footer>
 
+  <!-- Painel do ADM -->
+  <div id="adminPanel">
+    <h3 style="text-align:center;color:#ff0;">Painel do ADM</h3>
+    <select id="categoria">
+      <option value="diamantes">💎 Diamantes</option>
+      <option value="contas">🕹️ Contas</option>
+      <option value="paineis">📦 Painéis</option>
+      <option value="acessorios">🧤 Acessórios</option>
+    </select>
+    <input type="text" id="novoItem" placeholder="Digite a nova publicação">
+    <button onclick="addPublicacao()">Adicionar</button>
+    <button onclick="closeAdmin()">Fechar</button>
+  </div>
+
   <script>
-    function toggleMenu() {
-      document.getElementById('menuNav').classList.toggle("active");
+    let adminAtivo = false;
+
+    // Redirecionar produtos ao WhatsApp
+    function goWhatsApp(produto){
+      let msg = encodeURIComponent("Olá! Quero comprar: " + produto);
+      window.open("https://wa.me/244956581637?text=" + msg, "_blank");
     }
 
-    // Efeito revelar seções ao rolar
-    const sections = document.querySelectorAll("section");
-    window.addEventListener("scroll", () => {
-      const triggerBottom = window.innerHeight * 0.85;
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < triggerBottom) sec.classList.add("visible");
+    // Painel ADM
+    function openAdmin(){
+      let senha = prompt("Digite a senha de ADM:");
+      if(senha === "ADM1"){
+        document.getElementById("adminPanel").style.display = "block";
+        adminAtivo = true;
+        mostrarAcoesAdmin();
+      } else {
+        alert("Senha incorreta!");
+      }
+    }
+    function closeAdmin(){
+      document.getElementById("adminPanel").style.display = "none";
+      adminAtivo = false;
+      esconderAcoesAdmin();
+    }
+    function addPublicacao(){
+      let cat = document.getElementById("categoria").value;
+      let item = document.getElementById("novoItem").value.trim();
+      if(item){
+        let li = document.createElement("li");
+        li.className = "card";
+        li.textContent = item;
+        addAdminActions(li);
+        document.getElementById(cat).appendChild(li);
+        document.getElementById("novoItem").value = "";
+        alert("Publicação adicionada em " + cat + "!");
+      }
+    }
+
+    // Funções extras para editar/excluir
+    function addAdminActions(li){
+      let div = document.createElement("div");
+      div.className = "admin-actions";
+
+      let btnEdit = document.createElement("button");
+      btnEdit.textContent = "✏️";
+      btnEdit.className = "btn-edit";
+      btnEdit.onclick = function(e){
+        e.stopPropagation();
+        let novo = prompt("Editar publicação:", li.firstChild.textContent.trim());
+        if(novo){ li.firstChild.textContent = novo; }
+      };
+
+      let btnDel = document.createElement("button");
+      btnDel.textContent = "🗑️";
+      btnDel.className = "btn-del";
+      btnDel.onclick = function(e){
+        e.stopPropagation();
+        if(confirm("Deseja excluir esta publicação?")){
+          li.remove();
+        }
+      };
+
+      div.appendChild(btnEdit);
+      div.appendChild(btnDel);
+      li.appendChild(div);
+    }
+
+    function mostrarAcoesAdmin(){
+      document.querySelectorAll(".card").forEach(li=>{
+        if(!li.querySelector(".admin-actions")){
+          addAdminActions(li);
+        }
+        li.querySelector(".admin-actions").style.display = "flex";
       });
-    });
+    }
 
-    // Preloader
-    window.addEventListener("load", () => {
-      const preloader = document.getElementById('preloader');
-      preloader.style.opacity = '0';
-      setTimeout(() => { preloader.style.display = 'none'; }, 1000);
-    });
+    function esconderAcoesAdmin(){
+      document.querySelectorAll(".admin-actions").forEach(div=>{
+        div.style.display = "none";
+      });
+    }
   </script>
-
 </body>
-</html>
+  </html>
