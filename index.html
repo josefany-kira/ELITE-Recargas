@@ -1,343 +1,253 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-AO">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ELITE RECARGAS - O Teu Mundo Gamer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🏆 ELITE RECARGAS 🛒 / 🇦🇴</title>
+  <meta name="description" content="ELITE RECARGAS é a maior loja angolana de venda de contas Free Fire. Serviço rápido, seguro e confiável.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* ===== Reset ===== */
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1c1c1c, #000000);
-      color: #fff;
-      overflow-x: hidden;
+    :root{
+      --black: #0a0a0a;
+      --gold: #FFD700;
+      --gold-light: #ffe66d;
+      --card-dark: #1a1a1a;
+      --muted: #b3a369;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem 1rem;
-      background: linear-gradient(90deg, #ff0000, #ff7300, #ffef00, #00ff00, #008cff, #8f00ff);
-      background-size: 600% 600%;
-      animation: crazyBg 8s ease infinite;
-      cursor: pointer;
-    }
-    @keyframes crazyBg {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-    }
-    header img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      box-shadow: 0 0 20px rgba(255,255,0,0.7);
-      margin-bottom: 1rem;
-      object-fit: cover;
-    }
-    header h1 { font-size: 2.5rem; font-weight: bold; }
-    header p { font-size: 1.2rem; margin-top: .5rem; }
-
-    nav {
-      display: flex; justify-content: center; gap: 1rem;
-      background: #111; padding: 1rem;
-      position: sticky; top: 0; z-index: 10;
-    }
-    nav a {
-      color: #fff; text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover { color: #ff0; text-shadow: 0 0 10px #ff0; }
-
-    section {
-      padding: 3rem 1rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-      color: #ff0;
-      text-shadow: 0 0 10px #ff0, 0 0 20px #f00;
-    }
-    .banner {
-      text-align: center;
-      margin-bottom: 2rem;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%,100%{transform:scale(1);}
-      50%{transform:scale(1.05);}
-    }
-    .destaques ul, .produtos ul {
-      list-style: none; padding: 0;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .card {
-      background: #222;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255,255,0,0.3);
-      transition: transform 0.3s;
-      cursor: pointer;
-      position: relative;
-    }
-    .card:hover { transform: scale(1.05) rotate(-1deg); }
-    .card strong { color: #0f0; }
-    .admin-actions {
-      display:none;
-      position:absolute;
-      top:5px;
-      right:5px;
-      gap:5px;
-    }
-    .admin-actions button {
-      padding:2px 5px;
-      font-size:0.8rem;
-      border:none;
-      border-radius:4px;
-      cursor:pointer;
-    }
-    .btn-edit { background:#00f; color:#fff; }
-    .btn-del { background:#f00; color:#fff; }
-
-    .contato, .depoimentos { text-align: center; }
-    .contato p { margin: .5rem 0; }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #111;
-      font-size: .9rem;
-      color: #aaa;
-    }
-    @media (max-width:600px){
-      header h1{font-size:1.8rem;}
-      h2{font-size:1.5rem;}
-    }
-
-    /* Painel ADM */
-    #adminPanel {
-      display:none;
-      position:fixed;
-      top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      background:#111;
-      padding:20px;
-      border-radius:10px;
-      box-shadow:0 0 20px #ff0;
-      z-index:999;
-      width:90%; max-width:400px;
-    }
-    #adminPanel input, #adminPanel select {
-      width:100%; margin:5px 0; padding:10px;
-      border:none; border-radius:5px;
-    }
-    #adminPanel button {
-      margin-top:10px;
-      width:100%;
-      padding:10px;
-      background:#ff0;
-      border:none;
-      font-weight:bold;
-      cursor:pointer;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg, var(--black), #141414);color:#fff}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:56px 8vw}
+    .brand{display:flex;align-items:center;gap:16px}
+    .logo{width:92px;height:92px;border-radius:18px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 8px 30px rgba(255,215,0,0.35);cursor:pointer}
+    h1{margin:0;font-size:34px;color:var(--gold)}
+    p.lead{margin:12px 0 20px;color:var(--muted);font-weight:600}
+    .cta{display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:700;transition:all 0.3s ease}
+    .btn-primary{background:var(--gold);color:#000}
+    .btn-primary:hover{background:var(--gold-light)}
+    .btn-secondary{background:transparent;border:2px solid var(--gold);color:var(--gold)}
+    .btn-secondary:hover{background:var(--gold);color:#000}
+    .card{background:linear-gradient(180deg, #1f1f1f, #121212);padding:22px;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,0.35)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .video{width:100%;height:220px;background:#000;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--gold)}
+    footer{padding:28px 8vw;display:flex;justify-content:space-between;color:var(--muted);background:linear-gradient(180deg,#0f0f0f,transparent);flex-wrap:wrap;gap:10px}
+    #adminPanel{display:none;margin-top:20px}
+    #newsList .card{margin-bottom:10px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;gap:20px}.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <header onclick="openAdmin()">
-    <img src="logo.jpg" alt="Logo ELITE RECARGAS">
-    <h1>ELITE RECARGAS - O Teu Mundo Gamer Começa Aqui</h1>
-    <p>🔒 100% Confiável | 🇦🇴 Orgulho Angolano | 🚀 Entrega Rápida</p>
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <div class="brand">
+        <div class="logo" id="adminIcon">🏆</div>
+        <div>
+          <h1>🏆 ELITE RECARGAS 🛒 / 🇦🇴</h1>
+          <p class="lead">Seja bem-vindo à maior loja de vendas de contas Free Fire de Angola!</p>
+        </div>
+      </div>
+      <section style="margin-top:28px">
+        <h2 style="color:var(--gold);margin:0 0 8px">Regras & Informações</h2>
+        <p style="color:var(--muted);line-height:1.6;margin:0 0 12px">
+          ⚠️ Apenas vendas de conta FF 🛒<br>
+          🚫 Proibido mandar links desnecessários<br>
+          🚫 Proibido palavrões<br><br>
+          🕒 Horário: 8h35 às 22h<br>
+          🎥 TikTok: <a href="https://www.tiktok.com/@elias.wtf10?_t=ZM-8xc6yAPFoYg&_r=1" style="color:var(--gold)">Clique aqui</a><br>
+          💳 IBAN BAI: 0040000679887/210143<br>
+          📲 Número Express: 940 779 426<br>
+          🏅 Desafios valendo Passe e Dimas<br>
+          ✅ 100% confiável<br>
+          ⚠️ Compras apenas com @elias.Wtf10
+        </p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="window.location.href='https://wa.me/244937519067'">WhatsApp</button>
+          <button class="btn btn-secondary" onclick="alert('Mais informações em breve')">Ver planos</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Planos Populares -->
+    <aside style="width:100%;max-width:420px">
+      <div class="card">
+        <h3 style="margin:0 0 12px;color:var(--gold)">Planos Populares</h3>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="background:rgba(255,215,0,0.05);padding:12px;border-radius:10px;display:flex;justify-content:space-between;align-items:center">
+            <div><strong>Conta Básica</strong><div style="color:var(--muted);font-size:13px">Entrega rápida</div></div>
+            <div style="text-align:right"><div style="font-weight:800;color:var(--gold)">Kz 5.000</div><button class="btn" style="margin-top:8px;background:var(--gold);color:#000">Comprar</button></div>
+          </div>
+          <div style="background:rgba(255,215,0,0.05);padding:12px;border-radius:10px;display:flex;justify-content:space-between;align-items:center">
+            <div><strong>Conta Premium</strong><div style="color:var(--muted);font-size:13px">Com skins raras</div></div>
+            <div style="text-align:right"><div style="font-weight:800;color:var(--gold)">Kz 15.000</div><button class="btn" style="margin-top:8px;background:var(--gold);color:#000">Comprar</button></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:16px" class="card">
+        <h4 style="margin:0 0 8px;color:var(--gold)">Vídeo demonstrativo</h4>
+        <div class="video">Vídeo aqui</div>
+      </div>
+    </aside>
   </header>
 
-  <nav>
-    <a href="#inicio">Início</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#produtos">Produtos</a>
-    <a href="#como">Como Comprar</a>
-    <a href="#contato">Contato</a>
-    <a href="#depoimentos">Depoimentos</a>
-  </nav>
+  <!-- MAIN -->
+  <main style="padding:28px 8vw">
 
-  <section id="inicio">
-    <div class="banner">
-      <h2>Sejas bem-vindo à ELITE RECARGAS — onde os gamers confiam!</h2>
-      <p>[Imagem: Personagem FF + logo da ELITE RECARGAS]</p>
-    </div>
-    <div class="destaques">
-      <h2>Destaques da Semana</h2>
-      <ul>
-        <li class="card">🔥 Promoção de Diamantes</li>
-        <li class="card">⭐ Contas Exclusivas</li>
-        <li class="card">🎮 Painéis FF Personalizados</li>
-        <li class="card">🧤 Novidade: Luvas Gamer</li>
+    <!-- Destaques -->
+    <section>
+      <h2 style="color:var(--gold)">🔥 Destaques da Semana</h2>
+      <ul style="color:var(--muted);line-height:1.8">
+        <li>Contas Exclusivas</li>
+        <li>Painéis FF Personalizados</li>
+        <li>Novidade: Luvas Gamer (entrega local)</li>
       </ul>
-    </div>
-  </section>
+    </section>
 
-  <section id="sobre">
-    <h2>Sobre Nós</h2>
-    <p>Somos a <strong>ELITE RECARGAS</strong>, loja gamer que nasceu em Angola com o propósito de trazer confiança, rapidez e qualidade para jogadores angolanos e brasileiros.</p>
-    <p><strong>Missão:</strong> Ser referência no mercado gamer africano. <br>
-       <strong>Visão:</strong> Criar uma comunidade gamer unida. <br>
-       <strong>Compromisso:</strong> Segurança, confiança e respeito ao cliente.</p>
-  </section>
+    <!-- Produtos -->
+    <section style="margin-top:30px">
+      <h2 style="color:var(--gold)">🛒 Produtos</h2>
+      <div class="grid">
+        <div class="card"><h4 style="color:var(--gold)">Codiguin do Coelhão</h4><p style="color:var(--muted)">30k</p></div>
+        <div class="card"><h4 style="color:var(--gold)">Codiguin do Soldado Vulcânico</h4><p style="color:var(--muted)">30k</p></div>
+        <div class="card"><h4 style="color:var(--gold)">Codiguin da AK</h4><p style="color:var(--muted)">30k</p></div>
+        <div class="card"><h4 style="color:var(--gold)">🧤 Luvas Gamer</h4><p style="color:var(--muted)">3000Kz</p></div>
+        <div class="card"><h4 style="color:var(--gold)">🕹️ Contas FF Premium</h4><p style="color:var(--muted)">Com skins raras, atualizadas</p></div>
+        <div class="card"><h4 style="color:var(--gold)">📦 Painéis 100% HS</h4><p style="color:var(--muted)">Com garantia</p></div>
+      </div>
+    </section>
 
-  <section id="produtos">
-    <h2>Produtos</h2>
-    <div class="produtos">
-      <h3>💎 Diamantes Free Fire</h3>
-      <ul id="diamantes">
-        <li class="card" onclick="goWhatsApp('100 Dimas – 1400Kz')">100 Dimas – <strong>1400Kz</strong></li>
-        <li class="card" onclick="goWhatsApp('310 Dimas – 3700Kz')">310 Dimas – <strong>3700Kz</strong></li>
-        <li class="card" onclick="goWhatsApp('520 Dimas – 5500Kz')">520 Dimas – <strong>5500Kz</strong></li>
-        <li class="card" onclick="goWhatsApp('1060 Dimas – 11000Kz')">1060 Dimas – <strong>11000Kz</strong></li>
-        <li class="card" onclick="goWhatsApp('Passe Booyah – 2500Kz')">Passe Booyah – <strong>2500Kz</strong></li>
+    <!-- Info -->
+    <section class="grid" style="margin-top:30px">
+      <div class="card"><h3 style="color:var(--gold)">Como funciona</h3><p style="color:var(--muted)">Escolha o plano, envie os dados da conta e o comprovativo de pagamento. Entrega em minutos.</p></div>
+      <div class="card"><h3 style="color:var(--gold)">Segurança</h3><p style="color:var(--muted)">Sem pedir senha. Apenas ID/IGN. Pagamentos seguros via IBAN ou Express.</p></div>
+      <div class="card"><h3 style="color:var(--gold)">Suporte</h3><p style="color:var(--muted)">Atendimento rápido via WhatsApp, todos os dias no horário indicado.</p></div>
+    </section>
+
+    <!-- Sobre nós -->
+    <section style="margin-top:30px">
+      <h2 style="color:var(--gold)">📌 Sobre Nós</h2>
+      <p style="color:var(--muted)">História da loja, missão e visão. Garantia de segurança nas vendas. Compromisso com o cliente angolano e brasileiro.</p>
+    </section>
+
+    <!-- Como comprar -->
+    <section style="margin-top:30px">
+      <h2 style="color:var(--gold)">🛍️ Como Comprar</h2>
+      <ul style="color:var(--muted);line-height:1.8">
+        <li>Passos simples via WhatsApp</li>
+        <li>Formas de pagamento: referência, transferência, multicaixa</li>
+        <li>Garantia e suporte em todas as compras</li>
       </ul>
+    </section>
 
-      <h3>🧤 Acessórios Gamer</h3>
-      <ul id="acessorios">
-        <li class="card">Luvas Gamer – <strong>1200Kz</strong></li>
-      </ul>
+    <!-- Contato -->
+    <section style="margin-top:30px">
+      <h2 style="color:var(--gold)">📞 Contato</h2>
+      <p style="color:var(--muted)">WhatsApp: 952040405 • Express: 972 309 598 • Suporte via formulário no site</p>
+    </section>
 
-      <h3>🕹️ Contas FF Premium</h3>
-      <ul id="contas">
-        <li class="card">Contas com skins raras, sempre atualizadas</li>
-      </ul>
+    <!-- Depoimentos -->
+    <section style="margin-top:30px">
+      <h2 style="color:var(--gold)">⭐ Depoimentos</h2>
+      <div class="grid">
+        <div class="card"><p style="color:var(--muted)">"Entrega super rápida, recomendo!"</p></div>
+        <div class="card"><p style="color:var(--muted)">"Serviço 100% confiável, muito satisfeito."</p></div>
+        <div class="card"><p style="color:var(--muted)">"Produtos de qualidade e suporte top!"</p></div>
+      </div>
+    </section>
 
-      <h3>📦 Painéis e Serviços</h3>
-      <ul id="paineis">
-        <li class="card">Painéis 100% HS com garantia</li>
-      </ul>
-    </div>
-  </section>
+    <!-- Novidades -->
+    <section style="margin-top:30px">
+      <h2 style="color:var(--gold)">🆕 Novidades</h2>
+      <div id="newsList"></div>
+    </section>
 
-  <section id="como">
-    <h2>Como Comprar</h2>
-    <p>1️⃣ Escolhe o produto <br>
-       2️⃣ Faz o pedido pelo WhatsApp <br>
-       3️⃣ Paga via referência, transferência ou multicaixa <br>
-       4️⃣ Recebe com rapidez e suporte garantido 🚀</p>
-  </section>
+    <!-- Painel ADM -->
+    <section id="adminPanel" class="card">
+      <h3 style="color:var(--gold)">Painel ADM</h3>
+      <input type="text" id="newsValue" placeholder="Valor (ex: Kz 5.000)" style="width:100%;padding:10px;border-radius:6px;margin-bottom:10px">
+      <input type="file" id="newsImage" accept="image/*" style="margin-bottom:10px">
+      <textarea id="newsContent" placeholder="Escreva sua nova publicação..." style="width:100%;padding:10px;border-radius:6px;margin-bottom:10px"></textarea>
+      <button class="btn btn-primary" onclick="addNews()">Publicar</button>
+    </section>
 
-  <section id="contato" class="contato">
-    <h2>Contato</h2>
-    <p>📱 WhatsApp: <strong>956 581 637</strong></p>
-    <p>💸 Transferência Xpress: <strong>928224599</strong></p>
-    <p>📧 Suporte: formulário direto no site (em breve)</p>
-  </section>
+    <!-- Galeria -->
+    <section style="margin-top:20px">
+      <h3 style="color:var(--gold)">Galeria</h3>
+      <div style="display:flex;gap:12px;margin-top:10px;flex-wrap:wrap">
+        <div style="width:calc(33% - 8px);min-width:160px;background:#2a2a2a;height:120px;border-radius:10px"></div>
+        <div style="width:calc(33% - 8px);min-width:160px;background:#3a3a3a;height:120px;border-radius:10px"></div>
+        <div style="width:calc(33% - 8px);min-width:160px;background:#4a4a4a;height:120px;border-radius:10px"></div>
+      </div>
+    </section>
+  </main>
 
-  <section id="depoimentos" class="depoimentos">
-    <h2>Depoimentos</h2>
-    <p>"Entrega super rápida! Já virei cliente fiel." — <em>Manuel, Luanda</em></p>
-    <p>"Consegui meu passe Booyah em minutos, recomendo muito!" — <em>Bruno, Benguela</em></p>
-  </section>
-
+  <!-- FOOTER -->
   <footer>
-    © 2025 ELITE RECARGAS — Todos os direitos reservados
+    <div>© 2025 ELITE RECARGAS — Todos os direitos reservados</div>
+    <div>WhatsApp: +244 937 519 067 • Express: 972 309 598 • IBAN: 0040000679887/210143</div>
   </footer>
 
-  <!-- Painel do ADM -->
-  <div id="adminPanel">
-    <h3 style="text-align:center;color:#ff0;">Painel do ADM</h3>
-    <select id="categoria">
-      <option value="diamantes">💎 Diamantes</option>
-      <option value="contas">🕹️ Contas</option>
-      <option value="paineis">📦 Painéis</option>
-      <option value="acessorios">🧤 Acessórios</option>
-    </select>
-    <input type="text" id="novoItem" placeholder="Digite a nova publicação">
-    <button onclick="addPublicacao()">Adicionar</button>
-    <button onclick="closeAdmin()">Fechar</button>
-  </div>
-
+  <!-- SCRIPT -->
   <script>
-    let adminAtivo = false;
+    const adminIcon = document.getElementById('adminIcon');
+    const adminPanel = document.getElementById('adminPanel');
+    const newsList = document.getElementById('newsList');
 
-    // Redirecionar produtos ao WhatsApp
-    function goWhatsApp(produto){
-      let msg = encodeURIComponent("Olá! Quero comprar: " + produto);
-      window.open("https://wa.me/244956581637?text=" + msg, "_blank");
+    function loadNews(){
+      newsList.innerHTML = '';
+      const savedNews = JSON.parse(localStorage.getItem('eliteRecargasNews') || '[]');
+      savedNews.forEach(news => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+          ${news.image ? `<img src="${news.image}" style="max-width:100%;border-radius:8px;margin-bottom:8px">` : ''}
+          <p style="color:var(--muted)">${news.text}</p>
+          ${news.value ? `<strong style="color:var(--gold);display:block;margin-top:6px">${news.value}</strong>` : ''}
+        `;
+        newsList.appendChild(div);
+      });
     }
 
-    // Painel ADM
-    function openAdmin(){
-      let senha = prompt("Digite a senha de ADM:");
-      if(senha === "ADM1"){
-        document.getElementById("adminPanel").style.display = "block";
-        adminAtivo = true;
-        mostrarAcoesAdmin();
+    function addNews(){
+      const content = document.getElementById('newsContent').value.trim();
+      const value = document.getElementById('newsValue').value.trim();
+      const imageFile = document.getElementById('newsImage').files[0];
+
+      if(!content) return alert('Escreva algo para publicar.');
+
+      if(imageFile){
+        const reader = new FileReader();
+        reader.onload = function(e){
+          saveNews(content, value, e.target.result);
+        }
+        reader.readAsDataURL(imageFile);
       } else {
-        alert("Senha incorreta!");
-      }
-    }
-    function closeAdmin(){
-      document.getElementById("adminPanel").style.display = "none";
-      adminAtivo = false;
-      esconderAcoesAdmin();
-    }
-    function addPublicacao(){
-      let cat = document.getElementById("categoria").value;
-      let item = document.getElementById("novoItem").value.trim();
-      if(item){
-        let li = document.createElement("li");
-        li.className = "card";
-        li.textContent = item;
-        addAdminActions(li);
-        document.getElementById(cat).appendChild(li);
-        document.getElementById("novoItem").value = "";
-        alert("Publicação adicionada em " + cat + "!");
+        saveNews(content, value, null);
       }
     }
 
-    // Funções extras para editar/excluir
-    function addAdminActions(li){
-      let div = document.createElement("div");
-      div.className = "admin-actions";
-
-      let btnEdit = document.createElement("button");
-      btnEdit.textContent = "✏️";
-      btnEdit.className = "btn-edit";
-      btnEdit.onclick = function(e){
-        e.stopPropagation();
-        let novo = prompt("Editar publicação:", li.firstChild.textContent.trim());
-        if(novo){ li.firstChild.textContent = novo; }
-      };
-
-      let btnDel = document.createElement("button");
-      btnDel.textContent = "🗑️";
-      btnDel.className = "btn-del";
-      btnDel.onclick = function(e){
-        e.stopPropagation();
-        if(confirm("Deseja excluir esta publicação?")){
-          li.remove();
-        }
-      };
-
-      div.appendChild(btnEdit);
-      div.appendChild(btnDel);
-      li.appendChild(div);
+    function saveNews(text, value, image){
+      const savedNews = JSON.parse(localStorage.getItem('eliteRecargasNews') || '[]');
+      savedNews.unshift({ text, value, image });
+      localStorage.setItem('eliteRecargasNews', JSON.stringify(savedNews));
+      document.getElementById('newsContent').value = '';
+      document.getElementById('newsValue').value = '';
+      document.getElementById('newsImage').value = '';
+      loadNews();
     }
 
-    function mostrarAcoesAdmin(){
-      document.querySelectorAll(".card").forEach(li=>{
-        if(!li.querySelector(".admin-actions")){
-          addAdminActions(li);
-        }
-        li.querySelector(".admin-actions").style.display = "flex";
-      });
-    }
+    adminIcon.addEventListener('click', () => {
+      const senha = prompt('Digite a senha de ADM:');
+      if(senha === 'ADM1'){
+        adminPanel.style.display = 'block';
+        window.scrollTo(0, document.body.scrollHeight);
+      } else {
+        alert('Senha incorreta!');
+      }
+    });
 
-    function esconderAcoesAdmin(){
-      document.querySelectorAll(".admin-actions").forEach(div=>{
-        div.style.display = "none";
-      });
-    }
+    loadNews();
   </script>
 </body>
   </html>
